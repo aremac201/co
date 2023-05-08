@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <select id="item_sch_options" class="item_sch_options" name="item_sch_options" title="item_sch_options">
+    </select>
+    <select id="item_sch_options2" class="item_sch_options2" name="item_sch_options2" title="item_sch_options2">
+    </select>
+
+</body>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+<script>
+var toDate = new Date();
+var toYear = toDate.getFullYear();
+var $item_sch_options2 = $('#item_sch_options2');
+var $item_sch_options = $('#item_sch_options');
+
+$('#item_sch_options').on('change', function(e) {
+   var value = e.target.value;
+
+   asyncMonth(value);
+});
+
+$(function asyncYear() {
+   var date = new Date();
+   var formYear = 2023;
+   var year = date.getFullYear();
+   var month = date.getMonth() + 1;
+
+   if(month > 1) {
+      for(var i = formYear; i <= year; i++) { 
+         console.log(i)
+         if(i === year) {
+            $item_sch_options.append(`<option value="${i}" selected>${i}년</option>`);
+         } else {
+            $item_sch_options.append(`<option value="${i}">${i}년</option>`);
+         }
+      };
+   };
+});
+function asyncMonth(year) {
+   var selectYear = Number(year);
+   var fromYear = 2023;
+   var fromMonth = 4; // 기준 월
+
+   var date = new Date();
+   var year = date.getFullYear();
+   var month = date.getMonth() +1;
+
+   $item_sch_options2.html('');
+
+   if(selectYear === fromYear){
+      for(var i = fromMonth; i <= month; i++) { // 기준 월보다 현재 월이 작을 수 없고, 현재 월까지 보여야 함
+         if(i > 12) {
+            break;
+         }
+         $item_sch_options2.append(`<option value="${i}">${i}월</option>`);
+      };
+   };
+
+   if(selectYear < fromYear) {
+      for(var i = 1; i <= 12; i++) { // 기준 월보다 현재 월이 작을 수 없고, 현재 월까지 보여야 함
+         if(i > 12) {
+            break;
+         };
+         $item_sch_options2.append(`<option value="${i}">${i}월</option>`);
+      };
+   };
+};
+
+
+asyncMonth(toYear);
+</script>
+</html>

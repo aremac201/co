@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-2.2.4.js" integrity="sha256-iT6Q9iMJYuQiMWNd9lDyBUStIq/8PuOW33aOqmvFpqI=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="wrap">
+        
+        <!-- <div class="table_sch_form">
+            <select name="item_sch_options3" id="item_sch_options3" onchange="optionChange();" title="셀렉트박스">
+               <option value="서울(강남,강원)">서울(강남,강원)</option>
+               <option value="서울(강북)">서울(강북)</option>
+               <option value="인천/경기">인천/경기</option>
+               <option value="충청">충청</option>
+               <option value="호남">호남</option>
+               <option value="대구 /경북">대구 /경북</option>
+               <option value="부산/경남">부산/경남</option>
+            </select>
+            <select name="item_sch_options4" id="item_sch_options4" title="셀렉트박스">
+               <option value="우리 131-04-112990">우리 131-04-112990</option>
+            </select>
+         </div> -->
+         <div>
+            <select name="item_sch_options3" id="item_sch_options3" onchange="optionChange();">
+                <option value="서울(강남,강원)" selected>서울(강남,강원)</option>
+                <option value="서울(강북)">서울(강북)</option>
+                <option value="인천/경기">인천/경기</option>
+                <option value="충청">충청</option>
+                <option value="호남">호남</option>
+                <option value="대구/경북">대구/경북</option>
+                <option value="부산/경남">부산/경남</option>
+              </select>
+              <select name="item_sch_options4" id="item_sch_options4">
+              </select>
+         </div>
+    </div>
+</body>
+
+
+
+
+<script>
+    $(function(){
+
+    });
+		// 계좌 셀렉트 박스
+		var mainSelect = document.getElementById('item_sch_options3');
+        var subSelect = document.getElementById('item_sch_options4');
+		
+
+        // subSelect.options.length = 0;
+
+
+        // function changeOption(e){
+		// 	var mainOption = e.options[mainSelect.selectedIndex].value;
+
+
+        //     var subOptions = {
+        //             str1: ['우리 131-04-112990', '우리 131-04-112990', '우리 131-04-112990나ㅓ아너아ㅓ'],
+        //             str2: ['우리 935-000115-13-194'],
+        //             str3: ['우리 171-445529-13-001'],
+        //             str4: ['하나 605-910004-13804'],
+        //             str5: ['우리 152-04-103720'],
+        //             str6: ['우리 701-04-106383'],
+        //             str7: ['우리 053-336600-01-101']				
+        //     }
+            
+
+        //     switch(mainOption) {
+        //         case '서울(강남,강원)': 
+        //             var subOptions = subOptions.str1;
+        //         break;
+
+        //         case '서울(강북)':
+        //             var subOptions = subOptions.str2;
+        //         break;	
+
+        //         case '인천/경기':
+        //             var subOptions = subOptions.str3;
+        //         break;	
+
+        //         case '충청':
+        //             var subOptions = subOptions.str4;
+        //         break;	
+
+        //         case '호남':
+        //             var subOptions = subOptions.str5;
+        //         break;	
+
+        //         case '대구/경북':
+        //             var subOptions = subOptions.str6;
+        //         break;	
+
+        //         case '부산/경남':
+        //             var subOptions = subOptions.str7;
+        //         break;	
+                
+        //     }
+        //     console.log(mainOption, 'mainOption');
+        //     console.log(subOptions, 'subOptions');
+            
+            
+            // subSelect.options.length = 0;
+            
+            // for (let i = 0; i<subOptions.length, i++;) {
+            //     let option = document.createElement('option');
+            //     option.innerText = subOptions[i];
+            //     subSelect.append(option);
+            // }
+
+        // }
+
+        function optionChange() {
+            var v = $( '#item_sch_options3' ).val();
+            var o;
+
+            var subOptions = {
+                str1: ['우리 131-04-112990'],
+                str2: ['우리 935-000115-13-194'],
+                str3: ['우리 171-445529-13-001'],
+                str4: ['하나 605-910004-13804'],
+                str5: ['우리 152-04-103720'],
+                str6: ['우리 701-04-106383'],
+                str7: ['우리 053-336600-01-101']				
+            }
+
+            switch(v){
+                case '서울(강남,강원)': 
+                    o = subOptions.str1;
+                break;
+                case '서울(강북)':
+                    o = subOptions.str2;
+                break;	
+
+                case '인천/경기':
+                    o = subOptions.str3;
+                break;	
+
+                case '충청':
+                    o = subOptions.str4;
+                break;	
+
+                case '호남':
+                    o = subOptions.str5;
+                break;	
+
+                case '대구/경북':
+                    o = subOptions.str6;
+                break;	
+
+                case '부산/경남':
+                    o = subOptions.str7;
+                break;	
+            }
+
+            $( '#item_sch_options4' ).empty();
+            $( '#item_sch_options4' ).append( '<option></option>' );
+
+            for ( var i = 0; i < o.length; i++ ) {
+                $( '#item_sch_options4' ).append( '<option>' + o[ i ] + '</option>' );
+            }
+        }
+		
+
+
+        
+
+
+
+
+
+        // 백업 소스
+
+		// 계좌 셀렉트 박스
+		// var mainSelect = document.getElementById('item_sch_options3');
+		
+		// mainSelect.onchange = function() {
+		// 	var subSelect = document.getElementById('item_sch_options4');
+		// 	var mainOption = mainSelect.options[mainSelect.selectedIndex].value;
+		// }
+		
+		// var subOptions = {
+		// 		str1: ['우리 131-04-112990'],
+		// 		str2: ['우리 935-000115-13-194'],
+		// 	    str3: ['우리 171-445529-13-001'],
+	    // 		str4: ['하나 605-910004-13804'],
+	    // 		str5: ['우리 152-04-103720'],
+	    // 		str6: ['우리 701-04-106383'],
+    	// 		str7: ['우리 053-336600-01-101']				
+		// }
+		
+
+		// switch(mainOption) {
+		// 	case '서울(강남,강원)': 
+		// 		var subOptions = subOptions.str1;
+		// 	break;
+
+		// 	case '서울(강북)':
+		// 		var subOptions = subOptions.str2;
+		// 	break;	
+
+		// 	case '인천/경기':
+		// 		var subOptions = subOptions.str3;
+		// 	break;	
+
+		// 	case '충청':
+		// 		var subOptions = subOptions.str4;
+		// 	break;	
+
+		// 	case '호남':
+		// 		var subOptions = subOptions.str5;
+		// 	break;	
+
+		// 	case '대구/경북':
+		// 		var subOptions = subOptions.str6;
+		// 	break;	
+
+		// 	case '부산/경남':
+		// 		var subOptions = subOptions.str7;
+		// 	break;	
+			
+		// }
+		
+		// subSelect.options.length = 0;
+		
+		// for (let i = 0; i<subOptions.length, i++;) {
+		// 	let option = document.createElement('option');
+		// 	option.innerText = subOptions[i];
+		// 	subSelect.append(option);
+		// }
+		
+		
+</script>
+</html>
